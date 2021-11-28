@@ -1,0 +1,31 @@
+import turtle as trtl
+# create turtles
+red = trtl.Turtle()
+red.pencolor("red")
+red.fillcolor("red")
+red.shape("square")
+red.penup()
+red.goto(-100,100)
+blue = trtl.Turtle()
+blue.pencolor("blue")
+blue.fillcolor("blue")
+blue.shape("square")
+blue.penup()
+blue.goto(100,100)
+yellow = trtl.Turtle()
+yellow.pencolor("yellow")
+yellow.fillcolor("yellow")
+yellow.shape("square")
+yellow.penup()
+yellow.goto(-100,-100)
+green = trtl.Turtle()
+green.pencolor("green")
+green.fillcolor("green")
+green.shape("square")
+green.penup()
+green.goto(100,-100)
+
+colors = ["red", "blue", "yellow", "green"]
+
+wn = trtl.Screen()
+wn.mainloop()
