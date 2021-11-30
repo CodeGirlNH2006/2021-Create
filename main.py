@@ -1,5 +1,6 @@
 import turtle as trtl
 import random as rand
+import time as time
 
 # create turtles
 red = trtl.Turtle()
@@ -46,27 +47,71 @@ human_pattern = []
 def start_game(x, y):
     start.clear()
     start.hideturtle()
+    global level
     level = 1
     start.write("Level: " + str(level), font=font_setup)
     round()
 def round():
+    time.sleep(1)
     color = rand.randint(0, len(colors)-1)
     print(color)
     if color == 0:
-        i = 0
-        if i
         red.hideturtle()
+        time.sleep(.25)
         red.showturtle()
     if color == 1:
         blue.hideturtle()
+        time.sleep(.25)
         blue.showturtle()
     if color == 2:
         yellow.hideturtle()
+        time.sleep(.25)
         yellow.showturtle()
     if color == 3:
         green.hideturtle()
+        time.sleep(.25)
         green.showturtle()
-
+    pattern.append(color)
+    print(pattern)
+    human_round()
+def add_red(x, y):
+    red.hideturtle()
+    time.sleep(.25)
+    red.showturtle()
+    human_pattern.append(0)
+    print(human_pattern)
+def add_blue(x, y):
+    blue.hideturtle()
+    time.sleep(.25)
+    blue.showturtle()
+    human_pattern.append(1)
+    print(human_pattern)
+def add_yellow(x, y):
+    yellow.hideturtle()
+    time.sleep(.25)
+    yellow.showturtle()
+    human_pattern.append(2)
+    print(human_pattern)
+def add_green(x, y):
+    green.hideturtle()
+    time.sleep(.25)
+    green.showturtle()
+    human_pattern.append(3)
+    print(human_pattern)
+def human_round():
+    global level
+    red.onclick(add_red)
+    blue.onclick(add_blue)
+    yellow.onclick(add_yellow)
+    green.onclick(add_green)
+    if pattern == human_pattern:
+        start.clear()
+        start.write("Nice")
+        level = 1
+        level += 1
+        start.showturtle()
+        start.clear()
+        start.write("Level: " + str(level))
 start.onclick(start_game)
 
 wn = trtl.Screen()
