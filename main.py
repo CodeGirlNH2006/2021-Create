@@ -49,11 +49,16 @@ def start_game(x, y):
     start.hideturtle()
     global level
     level = 1
-    start.write("Level: " + str(level), font=font_setup)
-    round()
+    global score
+    score = 0
+    while score < 5:
+        round()
 def round():
+    global level
+    start.write("Level: " + str(level), font=font_setup)
     time.sleep(1)
-    color = rand.randint(0, len(colors)-1)
+    amount = 1
+    color = rand.randint(range(str(0, len(colors)-1)), amount)
     print(color)
     if color == 0:
         red.hideturtle()
@@ -73,7 +78,18 @@ def round():
         green.showturtle()
     pattern.append(color)
     print(pattern)
-    human_round()
+    while len(pattern) != len(human_pattern):
+        human_round()
+    if human_pattern == pattern:
+        level += 1
+        global score
+        score += 1
+        start.clear()
+        start.write("Level: " + str(level), font=font_setup)
+    else:
+        start.clear()
+        start.write("Game Over")
+    amount += 1
 def add_red(x, y):
     red.hideturtle()
     time.sleep(.25)
@@ -103,20 +119,6 @@ def human_round():
     blue.onclick(add_blue)
     yellow.onclick(add_yellow)
     green.onclick(add_green)
-    remaining_taps = len(pattern) - len(human_pattern)
-    if remaining_taps == 0:
-        if human_pattern == pattern:
-            start.clear()
-            start.write("Nice")
-            level = 1
-            level += 1
-            start.showturtle()
-            start.clear()
-            start.write("Level: " + str(level))
-        else:
-            print("Game over")
-
 start.onclick(start_game)
-
 wn = trtl.Screen()
 wn.mainloop()
