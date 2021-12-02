@@ -58,7 +58,7 @@ def round():
     start.write("Level: " + str(level), font=font_setup)
     time.sleep(1)
     amount = 1
-    color = rand.randint(range(str(0, len(colors)-1)), amount)
+    color = rand.randint(range(0, len(colors)-1)), amount)
     print(color)
     if color == 0:
         red.hideturtle()
