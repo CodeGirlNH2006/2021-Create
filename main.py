@@ -1,7 +1,7 @@
 import turtle as trtl
 import random as rand
 import time as time
-
+import sys
 # create turtles
 red = trtl.Turtle()
 red.pencolor("red")
@@ -31,7 +31,7 @@ green.shape("square")
 green.turtlesize(10)
 green.penup()
 green.goto(100,-100)
-font_setup = ("Arial", 20, "normal")
+font_setup = ("Comic Sans MS", 20, "italic")
 start = trtl.Turtle()
 start.penup()
 start.turtlesize(3)
@@ -42,6 +42,7 @@ start.write("Start (click the turtle to start)", font=font_setup)
 colors = ["red", "blue", "yellow", "green"]
 pattern = []
 human_pattern = []
+pattern_add = []
 
 # functions
 def start_game(x, y):
@@ -58,25 +59,29 @@ def round():
     start.write("Level: " + str(level), font=font_setup)
     time.sleep(1)
     amount = 1
-    color = rand.randint(range(0, len(colors)-1)), amount)
-    print(color)
-    if color == 0:
+    color = rand.sample(colors, amount)
+    if color == ['red']:
         red.hideturtle()
         time.sleep(.25)
         red.showturtle()
-    if color == 1:
+    if color == ['blue']:
         blue.hideturtle()
         time.sleep(.25)
         blue.showturtle()
-    if color == 2:
+    if color == ['yellow']:
         yellow.hideturtle()
         time.sleep(.25)
         yellow.showturtle()
-    if color == 3:
+    if color == ['green']:
         green.hideturtle()
         time.sleep(.25)
         green.showturtle()
-    pattern.append(color)
+    if amount < 2:
+        pattern.append(color)
+        pattern_add.append(color)
+    else:
+        pattern_add.append(color)
+        pattern.append(pattern_add)
     print(pattern)
     while len(pattern) != len(human_pattern):
         human_round()
@@ -86,39 +91,43 @@ def round():
         score += 1
         start.clear()
         start.write("Level: " + str(level), font=font_setup)
+        amount += 1
     else:
-        start.clear()
-        start.write("Game Over")
-    amount += 1
+        start.goto(-70,-20)
+        start.write("Game Over", font=font_setup)
+        end_game()
 def add_red(x, y):
     red.hideturtle()
     time.sleep(.25)
     red.showturtle()
-    human_pattern.append(0)
+    human_pattern.append(['red'])
     print(human_pattern)
 def add_blue(x, y):
     blue.hideturtle()
     time.sleep(.25)
     blue.showturtle()
-    human_pattern.append(1)
+    human_pattern.append(['blue'])
     print(human_pattern)
 def add_yellow(x, y):
     yellow.hideturtle()
     time.sleep(.25)
     yellow.showturtle()
-    human_pattern.append(2)
+    human_pattern.append(['yellow'])
     print(human_pattern)
 def add_green(x, y):
     green.hideturtle()
     time.sleep(.25)
     green.showturtle()
-    human_pattern.append(3)
+    human_pattern.append(['green'])
     print(human_pattern)
 def human_round():
     red.onclick(add_red)
     blue.onclick(add_blue)
     yellow.onclick(add_yellow)
     green.onclick(add_green)
+def end_game():
+    time.sleep(.5)
+    sys.exit()
 start.onclick(start_game)
 wn = trtl.Screen()
 wn.mainloop()
