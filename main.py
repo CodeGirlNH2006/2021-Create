@@ -58,8 +58,28 @@ def round():
     global level
     start.write("Level: " + str(level), font=font_setup)
     time.sleep(1)
-    amount = 1
-    color = rand.sample(colors, amount)
+    for x in pattern:
+        if x == ['red']:
+            red.hideturtle()
+            time.sleep(.25)
+            red.showturtle()
+            time.sleep(.25)
+        if x == ['blue']:
+            blue.hideturtle()
+            time.sleep(.25)
+            blue.showturtle()
+            time.sleep(.25)
+        if x == ['yellow']:
+            yellow.hideturtle()
+            time.sleep(.25)
+            yellow.showturtle()
+            time.sleep(.25)
+        if x == ['green']:
+            green.hideturtle()
+            time.sleep(.25)
+            green.showturtle()
+            time.sleep(.25)
+    color = rand.sample(colors, 1)
     if color == ['red']:
         red.hideturtle()
         time.sleep(.25)
@@ -76,12 +96,7 @@ def round():
         green.hideturtle()
         time.sleep(.25)
         green.showturtle()
-    if amount < 2:
-        pattern.append(color)
-        pattern_add.append(color)
-    else:
-        pattern_add.append(color)
-        pattern.append(pattern_add)
+    pattern.append(color)
     print(pattern)
     while len(pattern) != len(human_pattern):
         human_round()
@@ -91,7 +106,8 @@ def round():
         score += 1
         start.clear()
         start.write("Level: " + str(level), font=font_setup)
-        amount += 1
+        human_pattern.clear()
+
     else:
         start.goto(-70,-20)
         start.write("Game Over", font=font_setup)
