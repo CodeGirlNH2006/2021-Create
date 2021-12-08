@@ -50,10 +50,11 @@ def start_game(x, y):
     start.hideturtle()
     global level
     level = 1
-    global score
-    score = 0
-    while score < 5:
+    while level <= 10:
         round()
+    start.goto(-70, -20)
+    start.write("Congrats! You completed all the levels!", font=font_setup)
+    end_game()
 def round():
     global level
     start.write("Level: " + str(level), font=font_setup)
@@ -102,8 +103,6 @@ def round():
         human_round()
     if human_pattern == pattern:
         level += 1
-        global score
-        score += 1
         start.clear()
         start.write("Level: " + str(level), font=font_setup)
         human_pattern.clear()
