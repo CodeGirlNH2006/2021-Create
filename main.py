@@ -52,8 +52,11 @@ def start_game(x, y):
     level = 1
     while level <= 10:
         round()
-    start.goto(-70, -20)
-    start.write("Congrats! You completed all the levels!", font=font_setup)
+    if level == 11:
+        start.clear()
+    start.goto(-175, -20)
+    start.write("You completed all the levels!", font=font_setup)
+    time.sleep(1)
     end_game()
 def round():
     global level
@@ -98,7 +101,6 @@ def round():
         time.sleep(.25)
         green.showturtle()
     pattern.append(color)
-    print(pattern)
     while len(pattern) != len(human_pattern):
         human_round()
     if human_pattern == pattern:
@@ -116,25 +118,21 @@ def add_red(x, y):
     time.sleep(.25)
     red.showturtle()
     human_pattern.append(['red'])
-    print(human_pattern)
 def add_blue(x, y):
     blue.hideturtle()
     time.sleep(.25)
     blue.showturtle()
     human_pattern.append(['blue'])
-    print(human_pattern)
 def add_yellow(x, y):
     yellow.hideturtle()
     time.sleep(.25)
     yellow.showturtle()
     human_pattern.append(['yellow'])
-    print(human_pattern)
 def add_green(x, y):
     green.hideturtle()
     time.sleep(.25)
     green.showturtle()
     human_pattern.append(['green'])
-    print(human_pattern)
 def human_round():
     red.onclick(add_red)
     blue.onclick(add_blue)
