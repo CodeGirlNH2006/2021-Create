@@ -63,22 +63,22 @@ def round():
     time.sleep(1)
     for x in pattern:
         if x == ['red']:
-            button_pressed(red)
+            blink(red)
         elif x == ['blue']:
-            button_pressed(blue)
+            blink(blue)
         elif x == ['yellow']:
-            button_pressed(yellow)
+            blink(yellow)
         else:
-            button_pressed(green)
+            blink(green)
     color = rand.sample(colors, 1)
     if color == ['red']:
-        button_pressed(red)
+        blink(red)
     elif color == ['blue']:
-        button_pressed(blue)
+        blink(blue)
     elif color == ['yellow']:
-        button_pressed(yellow)
+        blink(yellow)
     else:
-        button_pressed(green)
+        blink(green)
     pattern.append(color)
     while len(pattern) != len(human_pattern):
         human_round()
@@ -91,22 +91,22 @@ def round():
         start.goto(-70,-20)
         start.write("Game Over", font=font_setup)
         end_game()
-def button_pressed(button):
+def blink(button):
     button.hideturtle()
     time.sleep(.25)
     button.showturtle()
     time.sleep(.25)
 def add_red(x, y):
-    button_pressed(red)
+    blink(red)
     human_pattern.append(['red'])
 def add_blue(x, y):
-    button_pressed(blue)
+    blink(blue)
     human_pattern.append(['blue'])
 def add_yellow(x, y):
-    button_pressed(yellow)
+    blink(yellow)
     human_pattern.append(['yellow'])
 def add_green(x, y):
-    button_pressed(green)
+    blink(green)
     human_pattern.append(['green'])
 def human_round():
     red.onclick(add_red)
