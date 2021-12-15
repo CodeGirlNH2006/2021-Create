@@ -53,7 +53,7 @@ def start_game(x, y):
         round()
     if level == 11:
         start.clear()
-    start.goto(-175, -20)
+    start.goto(-175, -250)
     start.write("You completed all the levels!", font=font_setup)
     time.sleep(1)
     end_game()
@@ -88,7 +88,7 @@ def round():
         start.write("Level: " + str(level), font=font_setup)
         human_pattern.clear()
     else:
-        start.goto(-70,-20)
+        start.goto(-70,-250)
         start.write("Game Over", font=font_setup)
         end_game()
 def blink(button):
