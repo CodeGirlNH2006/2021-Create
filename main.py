@@ -39,9 +39,9 @@ start.goto(-50,200)
 start.write("Start (click the turtle to start)", font=font_setup)
 
 # lists
-colors = ["red", "blue", "yellow", "green"]
 pattern = []
 human_pattern = []
+colors = ["red", "blue", "yellow", "green"]
 
 # functions
 def start_game(x, y):
